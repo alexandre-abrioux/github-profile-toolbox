@@ -12,8 +12,23 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  push_to_registry:
-    name: Push Docker image to Docker Hub
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Build test layer
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          target: test
+          push: false
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  deploy:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -47,16 +62,6 @@ jobs:
             type=ref,event=pr
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
-
-      - name: Build test layer
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          file: ./Dockerfile
-          target: test
-          push: false
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
 
       - name: Build and push
         id: push
