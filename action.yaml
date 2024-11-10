@@ -1,0 +1,20 @@
+name: github-profile-toolbox
+description: Add a toolbox in your profile's README
+author: alexandre-abrioux
+branding:
+  color: purple
+  icon: tool
+inputs:
+  readme:
+    description: path to the README file that will be updated
+    default: README.md
+    required: false
+  config:
+    description: path to the YAML configuration file
+    default: .github/github-profile-toolbox.yaml
+    required: false
+runs:
+  using: docker
+  image: alexandre-abrioux/github-profile-toolbox:latest
+  args:
+    - ${{ inputs.who-to-greet }}
