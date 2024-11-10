@@ -4,7 +4,7 @@ RUN apk add --no-cache musl-dev
 COPY . .
 
 FROM base AS test
-RUN cargo test
+RUN cargo check && cargo test
 
 FROM base AS builder
 RUN cargo build --release
