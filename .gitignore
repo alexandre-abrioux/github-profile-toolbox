@@ -1,4 +1,2 @@
 /target/
-/.dockerignore
-/Dockerfile
 /test.yaml
