@@ -15,7 +15,7 @@ inputs:
     required: false
 runs:
   using: docker
-  image: ghcr.io/alexandre-abrioux/github-profile-toolbox:latest
+  image: ghcr.io/alexandre-abrioux/github-profile-toolbox:v1
   args:
     - --config=/github/workspace/${{ inputs.config }}
     - --readme=/github/workspace/${{ inputs.readme }}
