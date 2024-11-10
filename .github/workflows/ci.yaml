@@ -28,8 +28,8 @@ jobs:
           file: ./Dockerfile
           target: test
           push: false
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          cache-from: type=gha,scope=test
+          cache-to: type=gha,mode=max,scope=test
 
   build:
     runs-on: ubuntu-latest
@@ -78,8 +78,8 @@ jobs:
           push: ${{ github.ref == 'refs/heads/main'}}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          cache-from: type=gha,scope=build
+          cache-to: type=gha,mode=max,scope=build
 
       - name: Attest
         uses: actions/attest-build-provenance@v1
