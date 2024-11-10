@@ -17,5 +17,5 @@ runs:
   using: docker
   image: ghcr.io/alexandre-abrioux/github-profile-toolbox:latest
   args:
-    - --config=${{ inputs.config }}
-    - --readme=${{ inputs.readme }}
+    - --config=/github/workspace/${{ inputs.config }}
+    - --readme=/github/workspace/${{ inputs.readme }}
