@@ -5,16 +5,17 @@ branding:
   color: purple
   icon: tool
 inputs:
-  readme:
-    description: path to the README file that will be updated
-    default: README.md
-    required: false
   config:
     description: path to the YAML configuration file
-    default: .github/github-profile-toolbox.yaml
+    default: .github/github-profile-toolbox.yml
+    required: false
+  readme:
+    description: path to the README file that should be modified
+    default: README.md
     required: false
 runs:
   using: docker
-  image: alexandre-abrioux/github-profile-toolbox:latest
+  image: ghcr.io/alexandre-abrioux/github-profile-toolbox:latest
   args:
-    - ${{ inputs.who-to-greet }}
+    - --config=${{ inputs.config }}
+    - --readme=${{ inputs.readme }}
