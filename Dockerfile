@@ -4,8 +4,8 @@ RUN apk add --no-cache musl-dev
 
 FROM base AS src
 COPY Cargo.toml Cargo.lock ./
-COPY src/ ./
-COPY tests/ ./
+COPY src/ ./src/
+COPY tests/ ./tests/
 
 FROM src AS test
 RUN cargo check && cargo test
