@@ -16,18 +16,19 @@ struct Args {
     config: String,
     /// Path to the README file to update
     #[arg(short, long)]
-    readme: String,
+    readme: Option<String>,
 }
 
 fn main() {
     let args = Args::parse();
     let contents = fs::read_to_string(&args.config).expect("Configuration file not found");
     let toolbox_markdown = generate_toolbox(&contents);
-    if args.readme.is_empty() {
+    let readme_path = args.readme.unwrap_or("".to_string());
+    if readme_path.is_empty() {
         print!("{}", toolbox_markdown);
         return;
     }
-    update_readme(&args.readme, &toolbox_markdown);
+    update_readme(&readme_path, &toolbox_markdown);
 }
 
 fn generate_toolbox(contents: &String) -> String {
