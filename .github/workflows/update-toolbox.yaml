@@ -1,6 +1,7 @@
 name: Update Toolbox
 on:
-  push: [ main ]
+  push:
+    branches: [ main ]
   workflow_dispatch:
 jobs:
   update-toolbox:

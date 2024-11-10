@@ -38,7 +38,8 @@ https://github.com/alexandre-abrioux#hammer_and_wrench-toolbox
 ```yml
 name: Update Toolbox
 on:
-  push: [ main ]
+  push:
+    branches: [ main ]
   workflow_dispatch:
 jobs:
   update-toolbox:
