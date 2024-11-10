@@ -3,7 +3,7 @@ description: Add a toolbox in your profile's README
 author: alexandre-abrioux
 branding:
   color: purple
-  icon: tool
+  icon: align-center
 inputs:
   config:
     description: Path to the YAML configuration file
