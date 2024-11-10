@@ -1,12 +1,14 @@
 FROM rust:1.82.0-alpine3.20 AS base
 WORKDIR /app
 RUN apk add --no-cache musl-dev
+
+FROM base AS src
 COPY . .
 
-FROM base AS test
+FROM src AS test
 RUN cargo check && cargo test
 
-FROM base AS builder
+FROM src AS builder
 RUN cargo build --release
 
 FROM alpine:3.20
