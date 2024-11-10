@@ -24,35 +24,35 @@ fn main() {
 }
 
 fn generate_toolbox(contents: &String) -> String {
-    let sections = load_yaml(&contents);
-    generate_markdown(&sections)
+    let tools = load_yaml(&contents);
+    generate_markdown(&tools)
 }
 
 fn load_yaml(contents: &String) -> Hash {
     let docs = YamlLoader::load_from_str(&contents).unwrap();
     let yaml = &docs[0];
-    let sections = yaml["sections"].as_hash().unwrap();
-    sections.clone()
+    let tools = yaml["tools"].as_hash().unwrap();
+    tools.clone()
 }
 
-fn generate_markdown(sections: &Hash) -> String {
+fn generate_markdown(tools: &Hash) -> String {
     let mut markdown = String::new();
-    markdown.push_str(&generate_header(sections));
-    markdown.push_str(&generate_items(sections));
+    markdown.push_str(&generate_header(tools));
+    markdown.push_str(&generate_items(tools));
     markdown
 }
 
-fn generate_header(sections: &Hash) -> String {
+fn generate_header(tools: &Hash) -> String {
     let mut header = String::new();
     header.push_str("|");
-    sections.keys().for_each(|k| {
-        header.push_str(k.as_str().unwrap());
+    tools.keys().for_each(|category| {
+        header.push_str(category.as_str().unwrap());
         header.push_str("|");
     });
     header.push_str("\n");
 
     header.push_str("|");
-    sections.keys().for_each(|_k| {
+    tools.keys().for_each(|_category| {
         header.push_str("-");
         header.push_str("|");
     });
@@ -61,22 +61,22 @@ fn generate_header(sections: &Hash) -> String {
     header
 }
 
-fn generate_items(sections: &Hash) -> String {
-    let lines_nb = sections.keys().fold(0, |max_sections_length, key| {
-        let section_items = sections[key].as_vec().unwrap();
-        if section_items.len() > max_sections_length {
-            return section_items.len();
+fn generate_items(tools: &Hash) -> String {
+    let lines_nb = tools.keys().fold(0, |max_tools_length, category| {
+        let category_items = tools[category].as_vec().unwrap();
+        if category_items.len() > max_tools_length {
+            return category_items.len();
         }
-        return max_sections_length;
+        return max_tools_length;
     });
 
     let mut items = String::new();
     for line in 1..=lines_nb {
         items.push_str("|");
-        sections.keys().for_each(|k| {
-            let section_items = sections[k].as_vec().unwrap();
-            if line <= section_items.len() {
-                let item = &section_items[line - 1];
+        tools.keys().for_each(|category| {
+            let category_items = tools[category].as_vec().unwrap();
+            if line <= category_items.len() {
+                let item = &category_items[line - 1];
                 items.push_str(generate_img_tag(item.as_str().unwrap()).as_str());
             }
             items.push_str("|");
@@ -108,7 +108,7 @@ mod tests {
     #[test]
     fn should_generate_markdown() {
         let input = "
-sections:
+tools:
   ides:
     - jetbrains
     - neovim
@@ -127,9 +127,9 @@ sections:
     }
 
     #[test]
-    fn should_handle_sections_with_different_number_of_items() {
+    fn should_handle_tools_with_different_number_of_items() {
         let input = "
-sections:
+tools:
   ides:
     - neovim
   languages:

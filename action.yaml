@@ -6,11 +6,11 @@ branding:
   icon: tool
 inputs:
   config:
-    description: path to the YAML configuration file
+    description: Path to the YAML configuration file
     default: .github/github-profile-toolbox.yml
     required: false
   readme:
-    description: path to the README file that should be modified
+    description: Path to the README file that should be modified
     default: README.md
     required: false
 runs:

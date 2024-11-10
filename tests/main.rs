@@ -21,7 +21,7 @@ mod tests {
     fn should_generate_toolbox() -> Result<(), Box<dyn std::error::Error>> {
         let file = assert_fs::NamedTempFile::new("config.yml")?;
         file.write_str(
-            "sections:
+            "tools:
   ides:
     - jetbrains
     - neovim
