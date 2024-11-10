@@ -1,0 +1,9 @@
+tools:
+  IDE:
+    - jetbrains
+    - neovim
+  Language:
+    - javascript
+    - cplusplus
+    - rust
+    - php

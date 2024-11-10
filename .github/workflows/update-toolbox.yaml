@@ -1,0 +1,20 @@
+name: Update Toolbox
+on:
+  push: [ main ]
+  workflow_dispatch:
+jobs:
+  update-toolbox:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: alexandre-abrioux/github-profile-toolbox@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: "docs(readme): update toolbox"
+          title: "docs(readme): update toolbox"
+          branch: patch/toolbox
+          reviewers: ${{ github.actor }}

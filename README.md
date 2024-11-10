@@ -21,24 +21,19 @@ tools:
 
 ; you would get the following output:
 
-| IDE                                                                                                                         | Language                                                                                                                       |
-|-----------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| [<img align="left" alt="JetBrains" src="https://img.shields.io/badge/-JetBrains-000000?logo=jetbrains&logoColor=white">](#) | [<img align="left" alt="JavaScript" src="https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black">](#) |
-| [<img align="left" alt="Neovim" src="https://img.shields.io/badge/-Neovim-57A143?logo=neovim&logoColor=white">](#)          | [<img align="left" alt="C++" src="https://img.shields.io/badge/-C++-00599C?logo=cplusplus&logoColor=white">](#)                |
-|                                                                                                                             | [<img align="left" alt="Rust" src="https://img.shields.io/badge/-Rust-000000?logo=rust&logoColor=white">](#)                   |
-|                                                                                                                             | [<img align="left" alt="PHP" src="https://img.shields.io/badge/-PHP-777BB4?logo=php&logoColor=white">](#)                      |                                                                                                                       | [<img align="left" alt="PHP" src="https://img.shields.io/badge/-PHP-777BB4?logo=php&logoColor=white">](#)                      |
+<!-- START_SECTION:toolbox --><!-- STOP_SECTION:toolbox -->
 
 Here is a real-life example:
 https://github.com/alexandre-abrioux#hammer_and_wrench-toolbox
 
 ## Instructions
 
-- Add the comment `<!--START_SECTION:toolbox -->` (entry point) within `README.md`. You can find an
-  example [here](https://github.com/alexandre-abrioux/alexandre-abrioux/blob/master/README.md).
+- Add the comment `<!-- START_SECTION:toolbox --><!-- STOP_SECTION:toolbox -->` within `README.md`.
+  You can find an example [here](https://github.com/alexandre-abrioux/alexandre-abrioux/blob/master/README.md).
 
 - Add the following workflow file to your profile repository:
 
-`.github/workflows/update-toolbox.yml`
+`.github/workflows/update-toolbox.yaml`
 
 ```yml
 name: Update Toolbox
@@ -70,10 +65,10 @@ example [here](https://github.com/alexandre-abrioux/alexandre-abrioux/blob/maste
 
 Use the following input parameters to customize it for your use case:
 
-| Input Param | Description                                     | Default Value                        |
-|-------------|-------------------------------------------------|--------------------------------------|
-| `config`    | path to the YAML configuration file             | `.github/github-profile-toolbox.yml` |
-| `readme`    | path to the README file that should be modified | `README.md`                          |
+| Input Param | Description                                     | Default Value                         |
+|-------------|-------------------------------------------------|---------------------------------------|
+| `config`    | path to the YAML configuration file             | `.github/github-profile-toolbox.yaml` |
+| `readme`    | path to the README file that should be modified | `README.md`                           |
 
 For instance, if you which to place your configuration file somewhere else, use the following:
 

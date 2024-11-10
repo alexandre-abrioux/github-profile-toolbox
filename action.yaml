@@ -7,7 +7,7 @@ branding:
 inputs:
   config:
     description: Path to the YAML configuration file
-    default: .github/github-profile-toolbox.yml
+    default: .github/github-profile-toolbox.yaml
     required: false
   readme:
     description: Path to the README file that should be modified
