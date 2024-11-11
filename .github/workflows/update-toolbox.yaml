@@ -20,4 +20,5 @@ jobs:
           title: "docs(readme): update toolbox"
           branch: patch/toolbox
           sign-commits: true
+          draft: always-true
           reviewers: ${{ github.actor }}

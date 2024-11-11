@@ -23,14 +23,14 @@ tools:
 
 <!-- START_SECTION:toolbox --><!-- STOP_SECTION:toolbox -->
 
-Here is a [real-life example](https://github.com/alexandre-abrioux#hammer_and_wrench-toolbox
-).
+Here is a
+[real-life example](https://github.com/alexandre-abrioux#hammer_and_wrench-toolbox).
 
 ## Instructions
 
 - Add the comment `<!-- START_SECTION:toolbox --><!-- STOP_SECTION:toolbox -->` within `README.md`.
   You can find an example
-  [here](https://github.com/alexandre-abrioux/github-profile-toolbox/blob/main/README.md?plain=1#L24).
+  [here](https://github.com/alexandre-abrioux/alexandre-abrioux/blob/main/README.md?plain=1).
 
 - Add the following workflow file to your profile repository:
 
@@ -65,8 +65,8 @@ jobs:
 - Go to your profile repository and under "Settings > Actions > General > Workflow permissions"
   activate the option "Allow GitHub Actions to create and approve pull requests".
 
-You can find an
-example [here](https://github.com/alexandre-abrioux/github-profile-toolbox/blob/main/.github/workflows/update-toolbox.yaml).
+You can find an example
+[here](https://github.com/alexandre-abrioux/alexandre-abrioux/blob/main/.github/workflows/update-toolbox.yaml).
 
 ### Override defaults
 
