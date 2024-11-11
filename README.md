@@ -147,3 +147,9 @@ For instance, if you which to place your configuration file somewhere else, use 
   with:
     config: "my-custom-path.yaml"
 ```
+
+## Contributing
+
+I've created this project on a Sunday to learn the basics of Rust.
+I'm by no mean knowledgeable on the language so feel free to suggest things I could have done better!
+I'm open to contributions, although this will probably stay as a slow-maintained side project.
