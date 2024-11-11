@@ -18,7 +18,7 @@ tools:
     - github
     - githubactions
   IDEs:
-    - visualstudiocode
+    - vscodium
     - jetbrains
     - neovim
 ```
