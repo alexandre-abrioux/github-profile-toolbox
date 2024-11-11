@@ -57,6 +57,7 @@ jobs:
         with:
           commit-message: "docs(readme): update toolbox"
           title: "docs(readme): update toolbox"
+          body: "Toolbox updated by [github-profile-toolbox](https://github.com/alexandre-abrioux/github-profile-toolbox) GitHub action"
           branch: patch/toolbox
           sign-commits: true
           reviewers: ${{ github.actor }}
