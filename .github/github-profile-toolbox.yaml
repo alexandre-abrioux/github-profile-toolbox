@@ -1,9 +1,28 @@
 tools:
-  IDE:
-    - jetbrains
-    - neovim
   Language:
+    - html5
+    - css3
+    - php
     - javascript
+    - typescript
     - cplusplus
     - rust
-    - php
+  Tools:
+    - git
+    - github
+    - gitlab
+    - debian
+    - archlinux
+    - nixos
+    - npm
+    - yarn
+    - pnpm
+  IDEs:
+    - visualstudiocode
+    - jetbrains
+    - webstorm
+    - rustrover
+    - vim
+    - neovim
+    - gnuemacs
+    - nano
