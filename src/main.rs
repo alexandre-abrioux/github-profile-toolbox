@@ -123,7 +123,7 @@ fn generate_img_tag(item: &Yaml) -> String {
         color_option = Some(icon_from_slug.color)
     }
     if item_hash.get(&Yaml::String("color".to_string())).is_some() {
-        color_option = Some(extract_string_from_hash(item_hash, "color"))
+        color_option = Some(extract_string_from_hash(item_hash, "color").replace("#", ""))
     }
     let label = extract_string_from_hash(item_hash, "label");
     let color = color_option
@@ -240,22 +240,25 @@ tools:
 
     #[test]
     fn should_handle_tools_with_custom_config() {
-        let input = "
+        let input = r##"
 tools:
   ides:
     - label: VSCode
       color: 29a9f2
+    - label: VSCode
+      color: "#29a9f2"
     - label: RustRover
       icon: jetbrains
     - label: RustRover
       icon: jetbrains
       color: feab02
-";
+"##;
         let markdown = generate_toolbox(&input.to_string());
         assert_eq!(
             markdown,
             r#"| ides                                                                                                                        |
 | --------------------------------------------------------------------------------------------------------------------------- |
+| [<img align="left" alt="VSCode" src="https://img.shields.io/badge/-VSCode-29a9f2?logoColor=white">](#)                      |
 | [<img align="left" alt="VSCode" src="https://img.shields.io/badge/-VSCode-29a9f2?logoColor=white">](#)                      |
 | [<img align="left" alt="RustRover" src="https://img.shields.io/badge/-RustRover-000000?logoColor=white&logo=jetbrains">](#) |
 | [<img align="left" alt="RustRover" src="https://img.shields.io/badge/-RustRover-feab02?logoColor=black&logo=jetbrains">](#) |
