@@ -9,14 +9,18 @@ Giving the following configuration passed as an input to the GitHub action:
 
 ```yaml
 tools:
-  IDE:
+  Language:
+    - html5
+    - css3
+    - javascript
+  Tools:
+    - git
+    - github
+    - githubactions
+  IDEs:
+    - visualstudiocode
     - jetbrains
     - neovim
-  Language:
-    - javascript
-    - cplusplus
-    - rust
-    - php
 ```
 
 ; you would get the following output:
@@ -32,9 +36,27 @@ Here is a
   You can find an example
   [here](https://github.com/alexandre-abrioux/alexandre-abrioux/blob/main/README.md?plain=1).
 
-- Add the following workflow file to your profile repository:
+- Add the configuration file to your GitHub profile repository:
+  `.github/github-profile-toolbox.yaml`
 
-`.github/workflows/update-toolbox.yaml`
+```yaml
+tools:
+  Language:
+    - html5
+    - css3
+    - javascript
+  Tools:
+    - git
+    - github
+    - githubactions
+  IDEs:
+    - visualstudiocode
+    - jetbrains
+    - neovim
+```
+
+- Add the following workflow file to your GitHub profile repository:
+  `.github/workflows/update-toolbox.yaml`
 
 ```yaml
 name: Update Toolbox
@@ -63,11 +85,21 @@ jobs:
           reviewers: ${{ github.actor }}
 ```
 
-- Go to your profile repository and under "Settings > Actions > General > Workflow permissions"
-  activate the option "Allow GitHub Actions to create and approve pull requests".
-
 You can find an example
 [here](https://github.com/alexandre-abrioux/alexandre-abrioux/blob/main/.github/workflows/update-toolbox.yaml).
+
+- In your GitHub profile repository, under "Settings > Actions > General > Workflow permissions",
+  activate the option "Allow GitHub Actions to create and approve pull requests".
+
+You're all set!
+
+### Configuration
+
+This GitHub action uses https://shields.io to generate icons in your profile's README,
+and `shield.io` itself uses https://simpleicons.org/ provide logos for brands.
+You can find a list of all available brand names over here:
+https://github.com/simple-icons/simple-icons/blob/develop/slugs.md.
+Use the `Brand slug` name to furnish your configuration file.
 
 ### Override defaults
 

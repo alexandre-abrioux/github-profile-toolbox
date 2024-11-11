@@ -2,27 +2,12 @@ tools:
   Language:
     - html5
     - css3
-    - php
     - javascript
-    - typescript
-    - cplusplus
-    - rust
   Tools:
     - git
     - github
-    - gitlab
-    - debian
-    - archlinux
-    - nixos
-    - npm
-    - yarn
-    - pnpm
+    - githubactions
   IDEs:
     - visualstudiocode
     - jetbrains
-    - webstorm
-    - rustrover
-    - vim
     - neovim
-    - gnuemacs
-    - nano
