@@ -1,12 +1,12 @@
 mod simple_icons;
 
-use std::fs;
-use yaml_rust2::yaml::Hash;
-use yaml_rust2::YamlLoader;
-
 use crate::simple_icons::color::is_relatively_light_icon_hex;
 use crate::simple_icons::SimpleIcons;
 use clap::Parser;
+use markdown_table_formatter::format_tables;
+use std::fs;
+use yaml_rust2::yaml::Hash;
+use yaml_rust2::YamlLoader;
 
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
@@ -47,7 +47,7 @@ fn generate_markdown(tools: &Hash) -> String {
     let mut markdown = String::new();
     markdown.push_str(&generate_header(tools));
     markdown.push_str(&generate_items(tools));
-    markdown
+    format_tables(markdown)
 }
 
 fn generate_header(tools: &Hash) -> String {
@@ -144,10 +144,10 @@ tools:
         let markdown = generate_toolbox(&input.to_string());
         assert_eq!(
             markdown,
-            "|ides|languages|
-|-|-|
-|[<img align=\"left\" alt=\"JetBrains\" src=\"https://img.shields.io/badge/-JetBrains-000000?logo=jetbrains&logoColor=white\">](#)|[<img align=\"left\" alt=\"JavaScript\" src=\"https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black\">](#)|
-|[<img align=\"left\" alt=\"Neovim\" src=\"https://img.shields.io/badge/-Neovim-57A143?logo=neovim&logoColor=white\">](#)|[<img align=\"left\" alt=\"Rust\" src=\"https://img.shields.io/badge/-Rust-000000?logo=rust&logoColor=white\">](#)|
+            "| ides                                                                                                                        | languages                                                                                                                      |
+| --------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| [<img align=\"left\" alt=\"JetBrains\" src=\"https://img.shields.io/badge/-JetBrains-000000?logo=jetbrains&logoColor=white\">](#) | [<img align=\"left\" alt=\"JavaScript\" src=\"https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black\">](#) |
+| [<img align=\"left\" alt=\"Neovim\" src=\"https://img.shields.io/badge/-Neovim-57A143?logo=neovim&logoColor=white\">](#)          | [<img align=\"left\" alt=\"Rust\" src=\"https://img.shields.io/badge/-Rust-000000?logo=rust&logoColor=white\">](#)                   |
 "
         );
     }
@@ -164,10 +164,10 @@ tools:
         let markdown = generate_toolbox(&input.to_string());
         assert_eq!(
             markdown,
-            "|ides|languages|
-|-|-|
-|[<img align=\"left\" alt=\"Neovim\" src=\"https://img.shields.io/badge/-Neovim-57A143?logo=neovim&logoColor=white\">](#)|[<img align=\"left\" alt=\"JavaScript\" src=\"https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black\">](#)|
-||[<img align=\"left\" alt=\"Rust\" src=\"https://img.shields.io/badge/-Rust-000000?logo=rust&logoColor=white\">](#)|
+            "| ides                                                                                                               | languages                                                                                                                      |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| [<img align=\"left\" alt=\"Neovim\" src=\"https://img.shields.io/badge/-Neovim-57A143?logo=neovim&logoColor=white\">](#) | [<img align=\"left\" alt=\"JavaScript\" src=\"https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black\">](#) |
+|                                                                                                                    | [<img align=\"left\" alt=\"Rust\" src=\"https://img.shields.io/badge/-Rust-000000?logo=rust&logoColor=white\">](#)                   |
 "
         );
     }
