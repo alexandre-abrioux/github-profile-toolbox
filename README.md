@@ -58,6 +58,7 @@ jobs:
           commit-message: "docs(readme): update toolbox"
           title: "docs(readme): update toolbox"
           branch: patch/toolbox
+          sign-commits: true
           reviewers: ${{ github.actor }}
 ```
 
