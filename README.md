@@ -100,7 +100,8 @@ You can find an example
 - In your GitHub profile repository, under "Settings > Actions > General > Workflow permissions",
   activate the option "Allow GitHub Actions to create and approve pull requests".
 
-You're all set!
+You're all set! Then next time you push on commit on `main`,
+you should receive a pull request that updates the toolbox section in your README.
 
 ## Configuration
 
