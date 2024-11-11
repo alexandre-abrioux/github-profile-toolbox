@@ -23,19 +23,20 @@ tools:
 
 <!-- START_SECTION:toolbox --><!-- STOP_SECTION:toolbox -->
 
-Here is a real-life example:
-https://github.com/alexandre-abrioux#hammer_and_wrench-toolbox
+Here is a [real-life example](https://github.com/alexandre-abrioux#hammer_and_wrench-toolbox
+).
 
 ## Instructions
 
 - Add the comment `<!-- START_SECTION:toolbox --><!-- STOP_SECTION:toolbox -->` within `README.md`.
-  You can find an example [here](https://github.com/alexandre-abrioux/alexandre-abrioux/blob/master/README.md).
+  You can find an example
+  [here](https://github.com/alexandre-abrioux/github-profile-toolbox/blob/main/README.md?plain=1#L24).
 
 - Add the following workflow file to your profile repository:
 
 `.github/workflows/update-toolbox.yaml`
 
-```yml
+```yaml
 name: Update Toolbox
 on:
   push:
@@ -60,8 +61,11 @@ jobs:
           reviewers: ${{ github.actor }}
 ```
 
+- Go to your profile repository and under "Settings > Actions > General > Workflow permissions"
+  activate the option "Allow GitHub Actions to create and approve pull requests".
+
 You can find an
-example [here](https://github.com/alexandre-abrioux/alexandre-abrioux/blob/master/.github/workflows/update-toolbox.yml).
+example [here](https://github.com/alexandre-abrioux/github-profile-toolbox/blob/main/.github/workflows/update-toolbox.yaml).
 
 ### Override defaults
 
@@ -74,7 +78,7 @@ Use the following input parameters to customize it for your use case:
 
 For instance, if you which to place your configuration file somewhere else, use the following:
 
-```yml
+```yaml
 - uses: alexandre-abrioux/github-profile-toolbox@v1
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
