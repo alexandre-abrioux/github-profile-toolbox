@@ -212,8 +212,8 @@ tools:
             markdown,
             r###"| ides                                                                                                                        | languages                                                                                                                      |
 | --------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| [<img align="left" alt="JetBrains" src="https://img.shields.io/badge/-JetBrains-000000?logo=jetbrains&logoColor=white">](#) | [<img align="left" alt="JavaScript" src="https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black">](#) |
-| [<img align="left" alt="Neovim" src="https://img.shields.io/badge/-Neovim-57A143?logo=neovim&logoColor=white">](#)          | [<img align="left" alt="Rust" src="https://img.shields.io/badge/-Rust-000000?logo=rust&logoColor=white">](#)                   |
+| [<img align="left" alt="JetBrains" src="https://img.shields.io/badge/-JetBrains-000000?logoColor=white&logo=jetbrains">](#) | [<img align="left" alt="JavaScript" src="https://img.shields.io/badge/-JavaScript-F7DF1E?logoColor=black&logo=javascript">](#) |
+| [<img align="left" alt="Neovim" src="https://img.shields.io/badge/-Neovim-57A143?logoColor=white&logo=neovim">](#)          | [<img align="left" alt="Rust" src="https://img.shields.io/badge/-Rust-000000?logoColor=white&logo=rust">](#)                   |
 "###
         );
     }
@@ -232,8 +232,8 @@ tools:
             markdown,
             r#"| ides                                                                                                               | languages                                                                                                                      |
 | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| [<img align="left" alt="Neovim" src="https://img.shields.io/badge/-Neovim-57A143?logo=neovim&logoColor=white">](#) | [<img align="left" alt="JavaScript" src="https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black">](#) |
-|                                                                                                                    | [<img align="left" alt="Rust" src="https://img.shields.io/badge/-Rust-000000?logo=rust&logoColor=white">](#)                   |
+| [<img align="left" alt="Neovim" src="https://img.shields.io/badge/-Neovim-57A143?logoColor=white&logo=neovim">](#) | [<img align="left" alt="JavaScript" src="https://img.shields.io/badge/-JavaScript-F7DF1E?logoColor=black&logo=javascript">](#) |
+|                                                                                                                    | [<img align="left" alt="Rust" src="https://img.shields.io/badge/-Rust-000000?logoColor=white&logo=rust">](#)                   |
 "#
         );
     }
