@@ -1,10 +1,12 @@
 mod markdown;
+mod schema;
 mod simple_icons;
+mod tool;
 
+use crate::schema::Config;
 use clap::Parser;
+use serde_yml::from_str;
 use std::fs;
-use yaml_rust2::yaml::Hash;
-use yaml_rust2::YamlLoader;
 
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
@@ -30,15 +32,12 @@ fn main() {
 }
 
 fn generate_toolbox(contents: &String) -> String {
-    let tools = load_yaml(&contents);
-    markdown::generate_markdown(&tools)
+    let config = load_config_yaml(&contents);
+    markdown::generate_markdown(&config.tools)
 }
 
-fn load_yaml(contents: &String) -> Hash {
-    let docs = YamlLoader::load_from_str(&contents).unwrap();
-    let yaml = &docs[0];
-    let tools = yaml["tools"].as_hash().unwrap();
-    tools.clone()
+fn load_config_yaml(contents: &String) -> Config {
+    from_str(&contents).unwrap()
 }
 
 fn update_readme(readme_path: &String, toolbox_markdown: &String) {

@@ -1,11 +1,11 @@
-use nanoserde::DeJson;
+use serde::Deserialize;
 
-#[derive(DeJson)]
+#[derive(Deserialize)]
 pub struct SimpleIconsData {
     pub icons: Vec<SimpleIconData>,
 }
 
-#[derive(DeJson)]
+#[derive(Deserialize)]
 pub struct SimpleIconData {
     pub slug: Option<String>,
     pub title: String,
@@ -19,5 +19,5 @@ pub fn fetch_simple_icons_data() -> SimpleIconsData {
         .expect("Could not download simple-icons")
         .into_string()
         .expect("Could not convert simple-icons to string");
-    DeJson::deserialize_json(&body).expect("JSON was not well-formatted")
+    serde_json::from_str(&body).expect("JSON was not well-formatted")
 }
