@@ -1,6 +1,6 @@
 # 🔧 GitHub Profile Toolbox
 
-With this GitHub action, you can display a stylish Markdown table on your GitHub profile
+Use this GitHub action to display a stylish Markdown table on your GitHub profile
 that summarizes your skill set.
 
 ## Example
