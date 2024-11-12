@@ -1,7 +1,7 @@
 # 🔧 GitHub Profile Toolbox
 
-With this GitHub action you can include a nice Markdown table in your GitHub profile
-to summarize your skill set.
+With this GitHub action, you can display a stylish Markdown table on your GitHub profile
+that summarizes your skill set.
 
 ## Example
 
@@ -100,16 +100,16 @@ You can find an example
 - In your GitHub profile repository, under "Settings > Actions > General > Workflow permissions",
   activate the option "Allow GitHub Actions to create and approve pull requests".
 
-You're all set! Then next time you push on commit on `main`,
-you should receive a pull request that updates the toolbox section in your README.
+You're all set! Next time you push a commit on `main`,
+you should receive a pull request to update the toolbox section in your profile's README.
 
 ## Configuration
 
 ### List of tools
 
 This GitHub action uses https://shields.io to generate icons in your profile's README,
-and `shield.io` itself uses https://simpleicons.org/ provide logos for brands.
-You can find a list of all available brand names over here:
+and `shield.io` uses https://simpleicons.org/ to provide logos for brands.
+You can find a list of all available brand names here:
 https://github.com/simple-icons/simple-icons/blob/develop/slugs.md.
 Use the `Brand slug` name to furnish your configuration file.
 
@@ -121,7 +121,7 @@ you can do so with the following:
 
 ```yaml
 tools:
-  ides:
+  IDEs:
     # VSCode is not available on SimpleIcons,
     # but you can still reference it without an icon:
     - label: VSCode
@@ -157,6 +157,6 @@ For instance, if you which to place your configuration file somewhere else, use 
 
 ## Contributing
 
-I've created this project on a Sunday to learn the basics of Rust.
-I'm by no mean knowledgeable on the language so feel free to suggest things I could have done better!
+I've bootstrapped this project on a Sunday to learn the basics of Rust.
+I'm by no means knowledgeable about the language so feel free to suggest things I could have done better!
 I'm open to contributions, although this will probably stay as a slow-maintained side project.
