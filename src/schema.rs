@@ -1,12 +1,12 @@
+use indexmap::IndexMap;
 use serde::Deserialize;
-use std::collections::BTreeMap;
 
 #[derive(Deserialize, Debug, PartialEq)]
 pub struct Config {
     pub tools: Tools,
 }
 
-pub type Tools = BTreeMap<String, Vec<ToolEnum>>;
+pub type Tools = IndexMap<String, Vec<ToolEnum>>;
 
 #[derive(Deserialize, Debug, PartialEq)]
 #[serde(untagged)]

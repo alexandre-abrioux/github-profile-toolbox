@@ -141,4 +141,22 @@ tools:
 "##;
         generate_toolbox(&input.to_string());
     }
+
+    #[test]
+    fn should_not_sort_columns_alphabetically() {
+        let input = "
+tools:
+  z:
+    - neovim
+  a:
+    - javascript";
+        let markdown = generate_toolbox(&input.to_string());
+        assert_eq!(
+            markdown,
+            r#"| z                                                                                                                  | a                                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| [<img align="left" alt="Neovim" src="https://img.shields.io/badge/-Neovim-57A143?logoColor=white&logo=neovim">](#) | [<img align="left" alt="JavaScript" src="https://img.shields.io/badge/-JavaScript-F7DF1E?logoColor=black&logo=javascript">](#) |
+"#
+        );
+    }
 }
