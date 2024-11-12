@@ -130,4 +130,15 @@ tools:
 "#
         );
     }
+
+    #[test]
+    #[should_panic(expected = "missing color or icon for item VSCode")]
+    fn should_handle_missing_property() {
+        let input = r##"
+tools:
+  ides:
+    - label: VSCode
+"##;
+        generate_toolbox(&input.to_string());
+    }
 }
