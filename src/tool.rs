@@ -1,4 +1,4 @@
-use crate::config::ToolConfig;
+use crate::config_schema::ToolConfig;
 use crate::simple_icons::SimpleIcons;
 
 pub struct Tool {

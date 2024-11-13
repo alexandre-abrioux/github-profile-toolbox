@@ -1,4 +1,4 @@
-use crate::config::{ToolEnum, Tools};
+use crate::config_schema::{ToolEnum, Tools};
 use crate::simple_icons::color::is_relatively_light_icon_hex;
 use crate::tool::{generate_tool_from_config, generate_tool_from_slug, Tool};
 use markdown_table_formatter::format_tables;
