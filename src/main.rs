@@ -1,11 +1,12 @@
+mod config;
 mod markdown;
 mod schema;
 mod simple_icons;
 mod tool;
 
+use crate::config::load_config;
 use crate::schema::Config;
 use clap::Parser;
-use serde_yml::from_str;
 use std::fs;
 
 #[derive(Parser, Debug)]
@@ -30,21 +31,8 @@ fn main() {
     update_readme(&args.readme.unwrap(), &toolbox_markdown);
 }
 
-fn load_config(config_file_path: &String) -> Config {
-    let content = fs::read_to_string(&config_file_path).expect("Configuration file not found");
-    load_config_from_content(&content)
-}
-
-fn load_config_from_content(config_content: &String) -> Config {
-    from_str(&config_content).unwrap()
-}
-
 fn generate_toolbox(config: &Config) -> String {
     markdown::generate_markdown(&config.tools)
-}
-
-pub fn generate_toolbox_from_config_as_string(config_content: &String) -> String {
-    generate_toolbox(&load_config_from_content(&config_content.to_string()))
 }
 
 fn update_readme(readme_path: &String, toolbox_markdown: &String) {
@@ -67,7 +55,12 @@ fn update_readme(readme_path: &String, toolbox_markdown: &String) {
 
 #[cfg(test)]
 mod tests {
-    use crate::generate_toolbox_from_config_as_string;
+    use crate::config::load_config_from_content;
+    use crate::generate_toolbox;
+
+    fn generate_toolbox_from_config_as_string(config_content: &String) -> String {
+        generate_toolbox(&load_config_from_content(&config_content.to_string()))
+    }
 
     #[test]
     fn should_generate_markdown() {
