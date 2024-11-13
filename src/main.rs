@@ -21,23 +21,30 @@ struct Args {
 
 fn main() {
     let args = Args::parse();
-    let contents = fs::read_to_string(&args.config).expect("Configuration file not found");
-    let toolbox_markdown = generate_toolbox(&contents);
-    let readme_path = args.readme.unwrap_or("".to_string());
-    if readme_path.is_empty() {
+    let config = load_config(&args.config);
+    let toolbox_markdown = generate_toolbox(&config);
+    if args.readme.is_none() {
         print!("{}", toolbox_markdown);
         return;
     }
-    update_readme(&readme_path, &toolbox_markdown);
+    update_readme(&args.readme.unwrap(), &toolbox_markdown);
 }
 
-fn generate_toolbox(contents: &String) -> String {
-    let config = load_config_yaml(&contents);
+fn load_config(config_file_path: &String) -> Config {
+    let content = fs::read_to_string(&config_file_path).expect("Configuration file not found");
+    load_config_from_content(&content)
+}
+
+fn load_config_from_content(config_content: &String) -> Config {
+    from_str(&config_content).unwrap()
+}
+
+fn generate_toolbox(config: &Config) -> String {
     markdown::generate_markdown(&config.tools)
 }
 
-fn load_config_yaml(contents: &String) -> Config {
-    from_str(&contents).unwrap()
+pub fn generate_toolbox_from_config_as_string(config_content: &String) -> String {
+    generate_toolbox(&load_config_from_content(&config_content.to_string()))
 }
 
 fn update_readme(readme_path: &String, toolbox_markdown: &String) {
@@ -60,11 +67,11 @@ fn update_readme(readme_path: &String, toolbox_markdown: &String) {
 
 #[cfg(test)]
 mod tests {
-    use crate::generate_toolbox;
+    use crate::generate_toolbox_from_config_as_string;
 
     #[test]
     fn should_generate_markdown() {
-        let input = "
+        let config = "
 tools:
   ides:
     - jetbrains
@@ -72,7 +79,7 @@ tools:
   languages:
     - javascript
     - rust";
-        let markdown = generate_toolbox(&input.to_string());
+        let markdown = generate_toolbox_from_config_as_string(&config.to_string());
         assert_eq!(
             markdown,
             r###"| ides                                                                                                                        | languages                                                                                                                      |
@@ -85,14 +92,14 @@ tools:
 
     #[test]
     fn should_handle_tools_with_different_number_of_items() {
-        let input = "
+        let config = "
 tools:
   ides:
     - neovim
   languages:
     - javascript
     - rust";
-        let markdown = generate_toolbox(&input.to_string());
+        let markdown = generate_toolbox_from_config_as_string(&config.to_string());
         assert_eq!(
             markdown,
             r#"| ides                                                                                                               | languages                                                                                                                      |
@@ -105,7 +112,7 @@ tools:
 
     #[test]
     fn should_handle_tools_with_custom_config() {
-        let input = r##"
+        let config = r##"
 tools:
   ides:
     - label: VSCode
@@ -118,7 +125,7 @@ tools:
       icon: jetbrains
       color: feab02
 "##;
-        let markdown = generate_toolbox(&input.to_string());
+        let markdown = generate_toolbox_from_config_as_string(&config.to_string());
         assert_eq!(
             markdown,
             r#"| ides                                                                                                                        |
@@ -134,23 +141,23 @@ tools:
     #[test]
     #[should_panic(expected = "missing color or icon for item VSCode")]
     fn should_handle_missing_property() {
-        let input = r##"
+        let config = r##"
 tools:
   ides:
     - label: VSCode
 "##;
-        generate_toolbox(&input.to_string());
+        generate_toolbox_from_config_as_string(&config.to_string());
     }
 
     #[test]
     fn should_not_sort_columns_alphabetically() {
-        let input = "
+        let config = "
 tools:
   z:
     - neovim
   a:
     - javascript";
-        let markdown = generate_toolbox(&input.to_string());
+        let markdown = generate_toolbox_from_config_as_string(&config.to_string());
         assert_eq!(
             markdown,
             r#"| z                                                                                                                  | a                                                                                                                              |
