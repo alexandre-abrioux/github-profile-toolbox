@@ -1,6 +1,6 @@
-use crate::schema::{Tool, ToolEnum, Tools};
+use crate::config::{ToolEnum, Tools};
 use crate::simple_icons::color::is_relatively_light_icon_hex;
-use crate::tool::{generate_tool_from_slug, generate_tool_from_struct};
+use crate::tool::{generate_tool_from_config, generate_tool_from_slug, Tool};
 use markdown_table_formatter::format_tables;
 
 pub fn generate_markdown(tools: &Tools) -> String {
@@ -60,8 +60,8 @@ fn generate_img_tag(tool_enum: &ToolEnum) -> String {
         ToolEnum::StringLike(slug) => {
             tool = generate_tool_from_slug(slug);
         }
-        ToolEnum::StructLike(tool_yaml) => {
-            tool = generate_tool_from_struct(tool_yaml);
+        ToolEnum::StructLike(tool_config) => {
+            tool = generate_tool_from_config(tool_config);
         }
     }
     generate_img_tag_from_tool(&tool)

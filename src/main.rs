@@ -1,11 +1,9 @@
 mod config;
 mod markdown;
-mod schema;
 mod simple_icons;
 mod tool;
 
-use crate::config::load_config;
-use crate::schema::Config;
+use crate::config::{load_config, Config};
 use clap::Parser;
 use std::fs;
 

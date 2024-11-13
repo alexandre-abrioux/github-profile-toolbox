@@ -1,22 +1,28 @@
-use crate::schema::{Tool, ToolYaml};
+use crate::config::ToolConfig;
 use crate::simple_icons::SimpleIcons;
 
-pub fn generate_tool_from_struct(tool_yaml: &ToolYaml) -> Tool {
+pub struct Tool {
+    pub label: String,
+    pub color: String,
+    pub icon: Option<String>,
+}
+
+pub fn generate_tool_from_config(tool_config: &ToolConfig) -> Tool {
     let mut color_option: Option<String> = None;
-    if tool_yaml.color.is_some() {
-        color_option = Some(tool_yaml.color.clone().unwrap().replace("#", ""))
-    } else if tool_yaml.icon.is_some() {
-        let tool_from_slug = generate_tool_from_slug(&tool_yaml.icon.clone().unwrap());
+    if tool_config.color.is_some() {
+        color_option = Some(tool_config.color.clone().unwrap().replace("#", ""))
+    } else if tool_config.icon.is_some() {
+        let tool_from_slug = generate_tool_from_slug(&tool_config.icon.clone().unwrap());
         color_option = Some(tool_from_slug.color)
     }
-    let label = tool_yaml.label.clone();
+    let label = tool_config.label.clone();
     let color = color_option
         .expect(format!("missing color or icon for item {label}").as_str())
         .to_string();
     Tool {
         label,
         color,
-        icon: tool_yaml.icon.clone(),
+        icon: tool_config.icon.clone(),
     }
 }
 
