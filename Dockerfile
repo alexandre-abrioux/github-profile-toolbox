@@ -1,4 +1,4 @@
-FROM rust:1.82.0-alpine3.20 AS base
+FROM rust:1.83.0-alpine3.20 AS base
 WORKDIR /app
 RUN apk add --no-cache musl-dev \
  && cargo install cargo-chef
