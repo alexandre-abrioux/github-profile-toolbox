@@ -34,9 +34,9 @@ impl SimpleIcons {
 fn init_simple_icons(max_icons: Option<usize>) -> HashMap<String, SimpleIcon> {
     let simple_icons_data = fetch_simple_icons_data();
     let mut simple_icons: HashMap<String, SimpleIcon> =
-        HashMap::with_capacity(simple_icons_data.icons.len());
+        HashMap::with_capacity(simple_icons_data.len());
 
-    for icon_data in simple_icons_data.icons {
+    for icon_data in simple_icons_data {
         let slug = match icon_data.slug {
             Some(slug) => slug,
             None => title_to_slug(&icon_data.title),

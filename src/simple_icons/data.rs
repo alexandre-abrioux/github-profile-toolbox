@@ -1,18 +1,13 @@
 use serde::Deserialize;
 
 #[derive(Deserialize)]
-pub struct SimpleIconsData {
-    pub icons: Vec<SimpleIconData>,
-}
-
-#[derive(Deserialize)]
 pub struct SimpleIconData {
     pub slug: Option<String>,
     pub title: String,
     pub hex: String,
 }
 
-pub fn fetch_simple_icons_data() -> SimpleIconsData {
+pub fn fetch_simple_icons_data() -> Vec<SimpleIconData> {
     let target = "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/_data/simple-icons.json";
     let body: String = ureq::get(&target)
         .call()
