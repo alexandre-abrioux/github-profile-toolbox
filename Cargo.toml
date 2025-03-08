@@ -3,6 +3,7 @@ name = "github-profile-toolbox"
 description = "Generate a toolbox to be inserted in the GitHub profile's README"
 version = "0.1.0"
 edition = "2021"
+rust-version = "1.85"
 
 [dependencies]
 clap = { version = "4.5.20", features = ["derive"] }
