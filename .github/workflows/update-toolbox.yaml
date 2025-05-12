@@ -1,7 +1,7 @@
 name: Update Toolbox
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 jobs:
   update-toolbox:
@@ -12,8 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: alexandre-abrioux/github-profile-toolbox@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: peter-evans/create-pull-request@v7
         with:
           commit-message: "docs(readme): update toolbox"
@@ -23,3 +21,4 @@ jobs:
           sign-commits: true
           draft: always-true
           reviewers: ${{ github.actor }}
+
