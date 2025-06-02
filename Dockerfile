@@ -22,6 +22,6 @@ COPY Cargo.toml Cargo.lock ./
 COPY src/ ./src/
 RUN cargo build --release --target x86_64-unknown-linux-musl
 
-FROM alpine:3.21
+FROM alpine:3.22
 COPY --from=builder /app/target/x86_64-unknown-linux-musl/release/github-profile-toolbox /usr/local/bin/
 ENTRYPOINT ["github-profile-toolbox"]
