@@ -13,11 +13,11 @@ tools:
     - html5
     - css
     - javascript
-  Tools:
+  Tool:
     - git
     - github
     - githubactions
-  IDEs:
+  IDE:
     - vscodium
     - jetbrains
     - neovim
