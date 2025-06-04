@@ -8,7 +8,7 @@ pub struct SimpleIconData {
 }
 
 pub fn fetch_simple_icons_data() -> Vec<SimpleIconData> {
-    let target = "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/_data/simple-icons.json";
+    let target = "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/data/simple-icons.json";
     let body: String = ureq::get(&target)
         .call()
         .expect("Could not download simple-icons")
