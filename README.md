@@ -11,7 +11,7 @@ Giving the following configuration passed as an input to the GitHub action:
 tools:
   Language:
     - html5
-    - css3
+    - css
     - javascript
   Tools:
     - git
