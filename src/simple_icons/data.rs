@@ -9,10 +9,11 @@ pub struct SimpleIconData {
 
 pub fn fetch_simple_icons_data() -> Vec<SimpleIconData> {
     let target = "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/data/simple-icons.json";
-    let body: String = ureq::get(&target)
+    let body: String = ureq::get(target)
         .call()
         .expect("Could not download simple-icons")
-        .into_string()
+        .body_mut()
+        .read_to_string()
         .expect("Could not convert simple-icons to string");
     serde_json::from_str(&body).expect("JSON was not well-formatted")
 }
