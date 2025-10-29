@@ -1,5 +1,5 @@
 use crate::config_schema::Config;
-use serde_yml::from_str;
+use serde_saphyr::from_str;
 use std::fs;
 
 pub fn load_config(config_file_path: &String) -> Config {

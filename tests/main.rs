@@ -1,15 +1,12 @@
 #[cfg(test)]
 mod tests {
-    use assert_cmd::prelude::*;
+    use assert_cmd::cargo::cargo_bin_cmd;
     use assert_fs::prelude::*;
     use predicates::prelude::*;
-    use std::process::Command;
-
-    static BIN_NAME: &'static str = "github-profile-toolbox";
 
     #[test]
     fn should_handle_missing_file() -> Result<(), Box<dyn std::error::Error>> {
-        let mut cmd = Command::cargo_bin(BIN_NAME)?;
+        let mut cmd = cargo_bin_cmd!();
         cmd.arg("--config").arg("test/file/doesnt/exist");
         cmd.assert()
             .failure()
@@ -33,7 +30,7 @@ tools:
     - php",
         )?;
 
-        let mut cmd = Command::cargo_bin(BIN_NAME)?;
+        let mut cmd = cargo_bin_cmd!();
         cmd.arg("--config").arg(config_file.path());
         cmd.assert().success().stdout(predicate::eq(r#"| ides                                                                                                                        | languages                                                                                                                      |
 | --------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
@@ -72,7 +69,7 @@ Lorem ipsum dolor sit amet
 ",
         )?;
 
-        let mut cmd = Command::cargo_bin(BIN_NAME)?;
+        let mut cmd = cargo_bin_cmd!();
         cmd.arg("--config").arg(config_file.path());
         cmd.arg("--readme").arg(readme_file.path());
         cmd.assert().success();
@@ -105,7 +102,7 @@ Lorem ipsum dolor sit amet
         config_file.write_str("tools:\n  ides:\n    - jetbrains")?;
         readme_file.write_str("")?;
 
-        let mut cmd = Command::cargo_bin(BIN_NAME)?;
+        let mut cmd = cargo_bin_cmd!();
         cmd.arg("--config").arg(config_file.path());
         cmd.arg("--readme").arg(readme_file.path());
         cmd.assert().failure().stderr(predicate::str::contains(
