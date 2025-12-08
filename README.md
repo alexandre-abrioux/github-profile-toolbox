@@ -82,7 +82,7 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: alexandre-abrioux/github-profile-toolbox@v1
       - uses: peter-evans/create-pull-request@v7
         with:
