@@ -9,8 +9,8 @@
       "minimumReleaseAge": "3 days"
     },
     {
-      // disable version updates for NPM packages
-      "matchDatasources": ["npm"],
+      // disable version updates for Cargo packages
+      "matchDatasources": ["cargo"],
       "enabled": false,
     },
   ],
