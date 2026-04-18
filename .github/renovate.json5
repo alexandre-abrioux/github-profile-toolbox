@@ -9,12 +9,12 @@
       "minimumReleaseAge": "3 days"
     },
     {
-      // disable version updates for Cargo packages
+      // disable version updates for Rust packages
       "matchCategories": ["rust"],
       "enabled": false,
     },
   ],
-  // enable security updates, even for NPM
+  // enable security updates, also for Rust packages
   "osvVulnerabilityAlerts": true,
   "vulnerabilityAlerts": {
     "enabled": true,
