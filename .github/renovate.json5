@@ -5,12 +5,12 @@
   ],
   "packageRules": [
     {
-      "matchDatasources": ["*"],
+      "matchCategories": ["*"],
       "minimumReleaseAge": "3 days"
     },
     {
       // disable version updates for Cargo packages
-      "matchDatasources": ["cargo"],
+      "matchCategories": ["rust"],
       "enabled": false,
     },
   ],
